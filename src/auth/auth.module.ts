@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { UsersModule } from '../users/users.module';
 
 import { JwtStrategy } from './strategies/jwt.strategy';
+import type { SignOptions } from 'jsonwebtoken';
 
 @Module({
   imports: [
@@ -17,8 +18,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       secret: process.env.JWT_SECRET,
 
       signOptions: {
-        expiresIn:
-          process.env.JWT_EXPIRES,
+        expiresIn: process.env.JWT_EXPIRES as SignOptions['expiresIn'],
       },
     }),
   ],
